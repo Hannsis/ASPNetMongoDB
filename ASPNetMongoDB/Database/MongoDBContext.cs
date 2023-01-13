@@ -1,6 +1,6 @@
 ﻿// Detta är en klass som används för att hantera databasoperationer i MongoDB.
 // Det finns flera olika metoder i denna klass för att hantera CRUD-operationer (skapa, läsa, uppdatera, radera) för katter.
-// De metoder som finns är: CreateCat, DeleteAllCats, DeleteAllCatsByColor, DeleteCat, GetAllCats, GetAllCatsByColor, GetCat och UpdateCat.
+// De metoder som finns är: CreateProduct, DeleteAllProducts, DeleteAllProductsByPrice, DeleteProduct, GetAllCats, GetAllCatsByAntal, GetCat och UpdateCat.
 
 namespace ASPNetMongoDB.Database;
 
@@ -14,14 +14,14 @@ public class MongoDBContext
 {
     #region Private Fields
 
-    // Denna fält håller MongoDBHandler<Cat> objektet, för att kommunicera med databasen.
-    private readonly MongoDBHandler<Cat> _catHandler;
+    // Denna fält håller MongoDBHandler<Product> objektet, för att kommunicera med databasen.
+    private readonly MongoDBHandler<Product> _productHandler;
 
     #endregion Private Fields
 
     #region Public Constructors
 
-    public MongoDBContext() => _catHandler = new MongoDBHandler<Cat>("MyCats", "Cats");
+    public MongoDBContext() => _productHandler = new MongoDBHandler<Product>("Products", "Products");
 
     #endregion Public Constructors
 
@@ -29,57 +29,66 @@ public class MongoDBContext
 
     //CRUD methods
     /// <summary>
-    /// Skapar ett nytt katt-objekt och sparar i databasen
+    /// Skapar ett nytt produkt-objekt och sparar i databasen
     /// </summary>
-    /// <param name="cat">Katt-objektet som ska sparas</param>
-    public void CreateCat(Cat cat)
+    /// <param name="product">Katt-objektet som ska sparas</param>
+    public void CreateProduct(Product product)
     {
-        _catHandler.Create(cat);
+        _productHandler.Create(product);
     }
 
     /// <summary>
     /// Raderar alla katter från databasen
     /// </summary>
-    public void DeleteAllCats()
+    public void DeleteAllProducts()
     {
-        _catHandler.DeleteAll();
+        _productHandler.DeleteAll();
     }
 
     /// <summary>
     /// Raderar alla katter med angiven färg från databasen
     /// </summary>
     /// <param name="color">Färgen på kattarna som ska raderas</param>
-    public void DeleteAllCatsByColor(string color)
+    public void DeleteAllProductsByPrice(int pris)
     {
-        _catHandler.DeleteAll("Color", color);
+        _productHandler.DeleteAll("", pris.ToString());
     }
 
     /// <summary>
-    /// Raderar en katt med angiven id från databasen
+    /// Raderar alla katter med angiven färg från databasen
+    /// </summary>
+    /// <param name="color">Färgen på kattarna som ska raderas</param>
+    public void DeleteAllProductsByAntal(int antal)
+    {
+        _productHandler.DeleteAll("", antal.ToString());
+    }
+
+    /// <summary>
+    /// Raderar en produkt med angiven id från databasen
     /// </summary>
     /// <param name="id">Id på katten som ska raderas</param>
-    public void DeleteCat(string id)
+    public void DeleteProduct(string id)
     {
-        _catHandler.Delete(id);
+        _productHandler.Delete(id);
     }
 
     /// <summary>
-    /// Hämtar alla katter från databasen
+    /// Hämtar alla prods från databasen
     /// </summary>
-    /// <returns>En lista med alla katter i databasen</returns>
-    public List<Cat> GetAllCats()
+    /// <returns>En lista med alla p i databasen</returns>
+    public List<Product> GetAllProducts()
     {
-        return _catHandler.GetAll();
+        return _productHandler.GetAll();
     }
 
     /// <summary>
-    /// Hämtar alla katter med angiven färg från databasen
+    /// Hämtar alla pro med angiven antal från databasen
     /// </summary>
     /// <param name="color">Färgen på kattarna som ska hämtas</param>
     /// <returns>En lista med alla katter med angiven färg i databasen</returns>
-    public List<Cat> GetAllCatsByColor(string color)
+    public List<Product> GetAllCatsByAntal(int antal)
     {
-        return _catHandler.GetAll("Color", color);
+        return _productHandler.GetAll("", antal.ToString());
     }
 
     /// <summary>
@@ -87,19 +96,19 @@ public class MongoDBContext
     /// </summary>
     /// <param name="id">Id på katten som ska hämtas</param>
     /// <returns>Katt-objektet med angiven id</returns>
-    public Cat GetCat(string id)
+    public Product GetProduct(string id)
     {
-        return _catHandler.Get(id);
+        return _productHandler.Get(id);
     }
 
     /// <summary>
     /// Uppdaterar en katt med angiven id och uppdateringsdata
     /// </summary>
     /// <param name="id">Id på katten som ska uppdateras</param>
-    /// <param name="cat">Katt-objektet med nya data</param>
-    public void UpdateCat(string id, Cat cat)
+    /// <param name="product">Katt-objektet med nya data</param>
+    public void UpdateProduct(string id, Product product)
     {
-        _catHandler.Update(id, cat);
+        _productHandler.Update(id, product);
     }
 
     #endregion Public Methods

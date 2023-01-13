@@ -1,8 +1,8 @@
-namespace ASPNetMongoDB.Views.Cats;
+namespace ASPNetMongoDB.Views.Product;
 
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-public class IndexModel : PageModel
+public class DetailsModel : PageModel
 {
     public void OnGet()
     {

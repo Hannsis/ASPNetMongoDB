@@ -1,28 +1,34 @@
-﻿@model Cat
+﻿@model Product
 @{
-    ViewData["Title"] = "Detaljer på en katt";
+    ViewData["Title"] = "Product information";
 }
-<h1>Kattinformation</h1>
+<h1>Product Information</h1>
 
 <div class="row">
     <div class="col-md-2">
-        <h4>Katt</h4>
         <hr />
         <div>
             <dl class="dl-horizontal">
                 <dt>
-                    <!-- Detta är kattens namn -->
+
                     @Html.DisplayNameFor(model => model.Name)
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Name)
                 </dd>
                 <dt>
-                    <!-- Detta är kattens färg -->
-                    @Html.DisplayNameFor(model => model.Color)
+
+                    @Html.DisplayNameFor(model => model.Antal)
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Color)
+                    @Html.DisplayFor(model => model.Antal)
+                </dd>
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.Pris)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Pris)
                 </dd>
             </dl>
         </div>

@@ -31,10 +31,11 @@ public class CatsController : Controller
 
     //HttpPost metod för att skapa en ny katt, tar emot ett Cat-objekt från vyn
     [HttpPost]
-    public IActionResult Create(Cat cat)
+    public IActionResult Create(Product product
+        )
     {
         //Använder vår MongoDBContext för att skapa en ny katt i databasen
-        _mongoDBContext.CreateCat(cat);
+        _mongoDBContext.CreateProduct(product);
         //Redirect till index-sidan efter att katten skapats
         return RedirectToAction("Index");
     }
@@ -44,7 +45,7 @@ public class CatsController : Controller
     public IActionResult Delete(string id)
     {
         //Använder vår MongoDBContext för att radera en katt i databasen
-        _mongoDBContext.DeleteCat(id);
+        _mongoDBContext.DeleteProduct(id);
         //Redirect till index-sidan efter att katten raderats
         return RedirectToAction("Index");
     }
@@ -54,7 +55,7 @@ public class CatsController : Controller
     public IActionResult Details(string id)
     {
         //Använder vår MongoDBContext för att hämta en katt med det angivna id:t
-        var cat = _mongoDBContext.GetCat(id);
+        var cat = _mongoDBContext.GetProduct(id);
         return View(cat);
     }
 
@@ -63,16 +64,16 @@ public class CatsController : Controller
     public IActionResult Edit(string id)
     {
         //Använder vår MongoDBContext för att hämta en katt med det angivna id:t
-        var cat = _mongoDBContext.GetCat(id);
-        return View(cat);
+        var product = _mongoDBContext.GetProduct(id);
+        return View(product);
     }
 
     //HttpPost metod för att uppdatera en befintlig katt, tar emot ett Cat-objekt från vyn
     [HttpPost]
-    public IActionResult Edit(Cat cat)
+    public IActionResult Edit(Product product)
     {
         //Använder vår MongoDBContext för att uppdatera en katt i databasen
-        _mongoDBContext.UpdateCat(cat.Id, cat);
+        _mongoDBContext.UpdateProduct(product.Id, product);
         //Redirect till index-sidan efter att katten uppdaterats
         return RedirectToAction("Index");
     }
@@ -82,8 +83,8 @@ public class CatsController : Controller
     public IActionResult Index()
     {
         //Använder vår MongoDBContext för att hämta alla katter
-        var cats = _mongoDBContext.GetAllCats();
-        return View(cats);
+        var product = _mongoDBContext.GetAllProducts();
+        return View(product);
     }
 
     #endregion Public Methods
