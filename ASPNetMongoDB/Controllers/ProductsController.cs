@@ -4,7 +4,7 @@ using ASPNetMongoDB.Database;
 using ASPNetMongoDB.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class CatsController : Controller
+public class ProductsController : Controller
 {
     #region Private Fields
 
@@ -16,7 +16,7 @@ public class CatsController : Controller
     #region Public Constructors
 
     //Konstruktorn instansierar en ny MongoDBContext och sätter det som vårt privata fält
-    public CatsController() => _mongoDBContext = new MongoDBContext();
+    public ProductsController() => _mongoDBContext = new MongoDBContext();
 
     #endregion Public Constructors
 
