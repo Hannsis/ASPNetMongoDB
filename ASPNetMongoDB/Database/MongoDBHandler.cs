@@ -3,7 +3,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-public class MongoDBHandler<T>
+public class ProductDBHandler<T>
 {
     private static string connString = "";
     private readonly IMongoCollection<T> _collection;
@@ -14,7 +14,7 @@ public class MongoDBHandler<T>
     /// </summary>
     /// <param name="databaseName">Namnet på databasen som ska användas</param>
     /// <param name="collectionName">Namnet på Collection som ska användas</param>
-    public MongoDBHandler(string databaseName, string collectionName)
+    public ProductDBHandler(string databaseName, string collectionName)
     {
         if (connString.Length == 0)
         {

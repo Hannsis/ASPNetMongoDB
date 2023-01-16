@@ -10,18 +10,18 @@ using System.Collections.Generic;
 /// <summary>
 /// Klassen ansvarar för att hantera databasoperationer i MongoDB.
 /// </summary>
-public class MongoDBContext
+public class ProductDBContext
 {
     #region Private Fields
 
-    // Denna fält håller MongoDBHandler<Product> objektet, för att kommunicera med databasen.
-    private readonly MongoDBHandler<Product> _productHandler;
+    // Denna fält håller ProductDBHandler<Product> objektet, för att kommunicera med databasen.
+    private readonly ProductDBHandler<Product> _productHandler;
 
     #endregion Private Fields
 
     #region Public Constructors
 
-    public MongoDBContext() => _productHandler = new MongoDBHandler<Product>("Products", "Products");
+    public ProductDBContext() => _productHandler = new ProductDBHandler<Product>("Products", "Products");
 
     #endregion Public Constructors
 
