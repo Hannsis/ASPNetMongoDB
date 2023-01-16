@@ -1,0 +1,40 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Product information";
+}
+<h1>Product Information</h1>
+
+<div class="row">
+    <div class="col-md-2">
+        <hr />
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.KundId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.KundId)
+                </dd>
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.Datum)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Datum)
+                </dd>
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.Varor)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Varor)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Tillbaka till listan</a>
+</div>

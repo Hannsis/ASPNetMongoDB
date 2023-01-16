@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASPNetMongoDB.Models.Order>
+
+@{
+    ViewData["Title"] = "Mirandas Maffiga Magiska Marknad!"; //alliteratioooonn
+}
+
+<h1>ORDER</h1>
+
+<p>
+    <a asp-action="Create">Skapa ny</a>
+</p>
+<table id="Varo" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <!-- Detta är namnet på katten -->
+                @Html.DisplayNameFor(model => model.KundId)
+            </th>
+            <th>
+                <!-- Detta är färgen på katten -->
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th>
+                <!-- Detta är färgen på katten -->
+                @Html.DisplayNameFor(model => model.Varor)
+            </th>
+            <th>
+                Tools and stuffies for eric
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KundId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Varor)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.KundId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.KundId">Info</a> |
+                    <a asp-action="Delete" asp-route-id="@item.KundId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#varo').DataTable();
+    });
+</script>

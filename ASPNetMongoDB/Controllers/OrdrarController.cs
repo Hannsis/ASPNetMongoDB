@@ -4,7 +4,7 @@ using ASPNetMongoDB.Database;
 using ASPNetMongoDB.Models;
 using Microsoft.AspNetCore.Mvc;
 
-public class CatsController : Controller
+public class OrdrarController : Controller
 {
     #region Private Fields
 
@@ -16,13 +16,13 @@ public class CatsController : Controller
     #region Public Constructors
 
     //Konstruktorn instansierar en ny MongoDBContext och sätter det som vårt privata fält
-    public CatsController() => _mongoDBContext = new MongoDBContext();
+    public OrdrarController() => _mongoDBContext = new MongoDBContext();
 
     #endregion Public Constructors
 
     #region Public Methods
 
-    //HttpGet metod för att skapa en ny katt
+    //HttpGet metod för att 
     [HttpGet]
     public IActionResult Create()
     {
@@ -31,11 +31,11 @@ public class CatsController : Controller
 
     //HttpPost metod för att skapa en ny katt, tar emot ett Cat-objekt från vyn
     [HttpPost]
-    public IActionResult Create(Product product
+    public IActionResult Create(Order order
         )
     {
         //Använder vår MongoDBContext för att skapa en ny katt i databasen
-        _mongoDBContext.CreateProduct(product);
+        _orderDBContext.CreateProduct(order);
         //Redirect till index-sidan efter att katten skapats
         return RedirectToAction("Index");
     }
